@@ -20,8 +20,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        quoteViewModel.onCreate()
+
         binding.viewContainer.setOnClickListener {
-            quoteViewModel.onCreate()
+            quoteViewModel.randomQuote()
         }
 
         quoteViewModel.quoteModel.observe(this, Observer {
