@@ -1,8 +1,10 @@
 package com.durand.introduction.ui.view
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.durand.introduction.databinding.ActivityMainBinding
 import com.durand.introduction.ui.viewModel.QuoteViewModel
 import androidx.lifecycle.Observer
@@ -25,6 +27,11 @@ class MainActivity : AppCompatActivity() {
         quoteViewModel.quoteModel.observe(this, Observer {
             binding.tvQuote.text = it.quote
             binding.tvAuthor.text = it.author
+        })
+
+
+        quoteViewModel.isLoading.observe(this, Observer {
+            binding.progress.isVisible = it
         })
     }
 }

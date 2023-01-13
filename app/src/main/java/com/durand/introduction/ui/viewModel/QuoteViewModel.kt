@@ -11,21 +11,24 @@ import kotlinx.coroutines.launch
 class QuoteViewModel : ViewModel() {
 
     val quoteModel = MutableLiveData<QuoteModel>()
+    val isLoading = MutableLiveData<Boolean>()
 
     var getQuotesUseCase = GetQuotesUseCase()
 
-    fun onCreate(){
+    fun onCreate() {
         viewModelScope.launch {
-          val result =  getQuotesUseCase()
-            if (!result.isNullOrEmpty()){
+            isLoading.postValue(true)
+            val result = getQuotesUseCase()
+            if (!result.isNullOrEmpty()) {
                 quoteModel.postValue(result[0])
+                isLoading.postValue(false)
             }
         }
     }
 
-    fun randomQuote(){
-      //  val currentQuote = QuoteProvider.random()
-      //  quoteModel.postValue(currentQuote)
+    fun randomQuote() {
+        //  val currentQuote = QuoteProvider.random()
+        //  quoteModel.postValue(currentQuote)
     }
 
 }
