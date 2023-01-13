@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.viewContainer.setOnClickListener {
-            quoteViewModel.randomQuote()
+            quoteViewModel.onCreate()
         }
 
         quoteViewModel.quoteModel.observe(this, Observer {
