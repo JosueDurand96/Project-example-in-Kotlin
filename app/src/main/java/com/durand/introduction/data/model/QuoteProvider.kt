@@ -1,4 +1,4 @@
-package com.durand.introduction.model
+package com.durand.introduction.data.model
 
 class QuoteProvider {
     companion object {

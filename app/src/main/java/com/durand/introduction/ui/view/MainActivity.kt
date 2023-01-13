@@ -1,12 +1,11 @@
-package com.durand.introduction.view
+package com.durand.introduction.ui.view
 
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.durand.introduction.databinding.ActivityMainBinding
-import com.durand.introduction.viewModel.QuoteViewModel
+import com.durand.introduction.ui.viewModel.QuoteViewModel
 import androidx.lifecycle.Observer
-import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
