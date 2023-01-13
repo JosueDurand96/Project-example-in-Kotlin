@@ -27,6 +27,10 @@ class QuoteViewModel : ViewModel() {
     }
 
     fun randomQuote() {
+        isLoading.postValue(true)
+
+
+        isLoading.postValue(false)
         //  val currentQuote = QuoteProvider.random()
         //  quoteModel.postValue(currentQuote)
     }
