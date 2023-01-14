@@ -7,6 +7,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 import javax.inject.Singleton
 
 @Module
@@ -25,6 +26,6 @@ object NetworkModule {
     @Singleton
     @Provides
     fun provideQuoteApiClient(retrofit: Retrofit): QuoteApiClient {
-
+        return retrofit.create(QuoteApiClient::class.java)
     }
 }

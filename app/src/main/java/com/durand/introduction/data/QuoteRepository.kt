@@ -5,10 +5,13 @@ import com.durand.introduction.data.model.QuoteProvider
 import com.durand.introduction.data.network.QuoteService
 import javax.inject.Inject
 
-class QuoteRepository @Inject constructor(private val api: QuoteService) {
+class QuoteRepository @Inject constructor(
+    private val api: QuoteService,
+    private val quoteProvider:
+) {
     suspend fun getAllQuote(): List<QuoteModel> {
         val response = api.getQuote()
-        QuoteProvider.quotes = response
+        quoteProvider.quotes = response
         return response
     }
 }
