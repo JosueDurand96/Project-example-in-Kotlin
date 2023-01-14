@@ -6,13 +6,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class QuoteService @Inject constructor(){
+class QuoteService @Inject constructor(private val api: QuoteApiClient) {
 
     private val retrofit = RetrofitHelper.getRetrofit()
 
     suspend fun getQuote(): List<QuoteModel> {
         return withContext(Dispatchers.IO) {
-            val response = retrofit.create(QuoteApiClient::class.java).getAllQuote()
+            val response = api.getAllQuote()
             response.body() ?: emptyList()
         }
     }
