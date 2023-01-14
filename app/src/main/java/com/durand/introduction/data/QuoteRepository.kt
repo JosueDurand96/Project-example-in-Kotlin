@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class QuoteRepository @Inject constructor(
     private val api: QuoteService,
-    private val quoteProvider:
+    private val quoteProvider:QuoteProvider
 ) {
     suspend fun getAllQuote(): List<QuoteModel> {
         val response = api.getQuote()
