@@ -1,5 +1,6 @@
 package com.durand.introduction.di
 
+import com.durand.introduction.data.network.QuoteApiClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,10 +15,16 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRetrofit():Retrofit{
+    fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl("https://drawsomething-59328-default-rtdb.europe-west1.firebasedatabase.app")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+    }
+
+    @Singleton
+    @Provides
+    fun provideQuoteApiClient(retrofit: Retrofit): QuoteApiClient {
+
     }
 }
