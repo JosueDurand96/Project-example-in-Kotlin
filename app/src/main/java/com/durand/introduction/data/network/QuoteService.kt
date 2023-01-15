@@ -1,6 +1,5 @@
 package com.durand.introduction.data.network
 
-import com.durand.introduction.core.RetrofitHelper
 import com.durand.introduction.data.model.QuoteModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
