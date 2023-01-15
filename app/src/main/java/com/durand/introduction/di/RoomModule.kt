@@ -20,4 +20,8 @@ object RoomModule {
     @Provides
     fun provideRoom(@ApplicationContext context: Context) =
         Room.databaseBuilder(context, QuoteDatabase::class.java, QUOTE_DATABASE_NAME).build()
+
+    @Singleton
+    @Provides
+    fun provideQuoteDao(db: QuoteDatabase) = db.getQuoteDao()
 }
