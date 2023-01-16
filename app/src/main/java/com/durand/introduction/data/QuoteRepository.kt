@@ -1,6 +1,7 @@
 package com.durand.introduction.data
 
 import com.durand.introduction.data.database.dao.QuoteDao
+import com.durand.introduction.data.database.entities.QuoteEntity
 import com.durand.introduction.data.model.QuoteModel
 import com.durand.introduction.data.model.QuoteProvider
 import com.durand.introduction.data.network.QuoteService
@@ -18,8 +19,7 @@ class QuoteRepository @Inject constructor(
     }
 
     suspend fun getAllQuotesFromDatabase(): List<Quote> {
-        val response = api.getQuote()
-        quoteProvider.quotes = response
-        return response
+        val response: List<QuoteEntity> = quoteDao.getAllQuotes()
+        return response.map { it.toDomain() }
     }
 }
