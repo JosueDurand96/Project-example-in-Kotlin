@@ -26,4 +26,8 @@ class QuoteRepository @Inject constructor(
     suspend fun insertQuotesDatabase(quotes: List<QuoteEntity>){
         quoteDao.insertAll(quotes)
     }
+
+    suspend fun clearQuotes(){
+        quoteDao.clearQuote()
+    }
 }

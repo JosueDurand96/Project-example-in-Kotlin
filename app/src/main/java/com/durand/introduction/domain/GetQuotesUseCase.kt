@@ -10,6 +10,7 @@ class GetQuotesUseCase @Inject constructor(private val repository: QuoteReposito
     suspend operator fun invoke(): List<Quote> {
         val quotes = repository.getAllQuotesFromApi()
         return if (!quotes.isNullOrEmpty()) {
+            repository.clearQuotes()
             repository.insertQuotesDatabase(quotes.map { it.toDatabase() })
             quotes
         } else {
