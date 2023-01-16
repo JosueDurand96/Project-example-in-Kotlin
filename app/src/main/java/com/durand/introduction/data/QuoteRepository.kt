@@ -22,4 +22,8 @@ class QuoteRepository @Inject constructor(
         val response: List<QuoteEntity> = quoteDao.getAllQuotes()
         return response.map { it.toDomain() }
     }
+
+    suspend fun insertQuotesDatabase(quotes: List<QuoteEntity>){
+        quoteDao.insertAll(quotes)
+    }
 }
