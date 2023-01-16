@@ -3,7 +3,6 @@ package com.durand.introduction.data
 import com.durand.introduction.data.database.dao.QuoteDao
 import com.durand.introduction.data.database.entities.QuoteEntity
 import com.durand.introduction.data.model.QuoteModel
-import com.durand.introduction.data.model.QuoteProvider
 import com.durand.introduction.data.network.QuoteService
 import com.durand.introduction.domain.model.Quote
 import com.durand.introduction.domain.model.toDomain
