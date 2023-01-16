@@ -3,6 +3,7 @@ package com.durand.introduction.domain
 import com.durand.introduction.data.QuoteRepository
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
+import io.mockk.coVerify
 import io.mockk.impl.annotations.RelaxedMockK
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
@@ -27,8 +28,9 @@ class GetQuotesUseCaseTest {
         //Given (Cuando hay una coroutinas se pone el "co")
         coEvery { quoteRepository.getAllQuotesFromApi() } returns emptyList()
         //When
-
+        getQuotesUseCase()
         //Then
+        coVerify(exactly = 1) { quoteRepository.getAllQuotesFromDatabase() }
     }
 
 }
