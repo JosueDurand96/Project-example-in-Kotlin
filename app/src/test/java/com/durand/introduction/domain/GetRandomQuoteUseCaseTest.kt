@@ -2,6 +2,7 @@ package com.durand.introduction.domain
 
 import com.durand.introduction.data.QuoteRepository
 import io.mockk.MockKAnnotations
+import io.mockk.coEvery
 import io.mockk.impl.annotations.RelaxedMockK
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
@@ -21,7 +22,14 @@ internal class GetRandomQuoteUseCaseTest {
     }
 
     @Test
-    fun  `when the api doesnt return anything then get values from database`() = runBlocking {
-
+    fun  `when the database is empty then return null`() = runBlocking {
+        //Given
+        coEvery { quoteRepository.getAllQuotesFromDatabase() } returns emptyList()
+        //When
+        val response = getRandomQuoteUseCaseTest()
+        //Then
+        assert(response == null)
     }
+
+
 }
