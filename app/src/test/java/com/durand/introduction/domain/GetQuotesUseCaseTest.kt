@@ -50,6 +50,7 @@ class GetQuotesUseCaseTest {
         coVerify(exactly = 1) { quoteRepository.clearQuotes() }
         coVerify(exactly = 1) { quoteRepository.insertQuotesDatabase(any()) }
         coVerify(exactly = 0) { quoteRepository.getAllQuotesFromDatabase() }
+        assert(myList == response)
     }
 
 }
