@@ -14,7 +14,6 @@ class GetQuotesUseCaseTest {
 
     @RelaxedMockK
     private lateinit var quoteRepository: QuoteRepository
-
     lateinit var getQuotesUseCase: GetQuotesUseCase
 
     @Before
@@ -27,10 +26,8 @@ class GetQuotesUseCaseTest {
     fun `when the api doesnt return anything then get values from database`() = runBlocking {
         //Given (Cuando hay una coroutinas se pone el "co")
         coEvery { quoteRepository.getAllQuotesFromApi() } returns emptyList()
-
         //When
         getQuotesUseCase()
-
         //Then
         coVerify(exactly = 0) { quoteRepository.clearQuotes() }
         coVerify(exactly = 0) { quoteRepository.insertQuotesDatabase(any()) }
@@ -40,12 +37,10 @@ class GetQuotesUseCaseTest {
     @Test
     fun `when the api doesnt return anything then get values from api`() = runBlocking {
         //Given (Cuando hay una coroutinas se pone el "co")
-        val myList = listOf(Quote("Hola Mundo","Josue Durand"))
+        val myList = listOf(Quote("Hola Mundo", "Josue Durand"))
         coEvery { quoteRepository.getAllQuotesFromApi() } returns myList
-
         //When
         val response = getQuotesUseCase()
-
         //Then
         coVerify(exactly = 1) { quoteRepository.clearQuotes() }
         coVerify(exactly = 1) { quoteRepository.insertQuotesDatabase(any()) }
